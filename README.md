@@ -35,7 +35,7 @@ There is tooling to create a datastore of users in `data/users.json`. These incl
 ### 3. Implement an authorize middleware
   - Each user has a `permissions` array that contains some combination of `GET` `LIST` `UPDATE` and `DELETE`
   - A user with the `GET` permission should be authorized to call the `GET /patients/:patientId` route
-  - A user with the `LIST` permission should be authorized to call the `GET /patienst` route
+  - A user with the `LIST` permission should be authorized to call the `GET /patients` route
   - A user with the `UPDATE` permission should be authorized to call the `PUT /patients/:patientId` route
   - A user with the `DELETE` permission should be authorized to call the `DELETE /patients/:patientId` route
   - If a user tries to call a route they are not authorized for, the correct error should be thrown
