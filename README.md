@@ -24,15 +24,12 @@ There is tooling to create a datastore of users in `data/users.json`. These incl
 
 ## Goals
 
-### 1. Implement an error handler
-  - This should catch all errors.
-  - It should set the correct status code on the response, and return JSON with the error message and code.
-### 2. Implement an authenticate middleware
+### 1. Implement an authenticate middleware
   - User datastore is provided, with usernames and sha1 hashed passwords
   - Basic auth via the `Authorization` header should be used
   - The passwords in the users database are only there so you can test the authenticate middleware. You should validate the passwords against the `passwordHash` which is a hex digest of the sha1 hash of the password.
   - This authenticate middleware should apply to all routes
-### 3. Implement an authorize middleware
+### 2. Implement an authorize middleware
   - Each user has a `permissions` array that contains some combination of `GET` `LIST` `UPDATE` and `DELETE`
   - A user with the `GET` permission should be authorized to call the `GET /patients/:patientId` route
   - A user with the `LIST` permission should be authorized to call the `GET /patients` route
@@ -40,10 +37,7 @@ There is tooling to create a datastore of users in `data/users.json`. These incl
   - A user with the `DELETE` permission should be authorized to call the `DELETE /patients/:patientId` route
   - If a user tries to call a route they are not authorized for, the correct error should be thrown
   - The user must be authenticated before we even try to authorize
-### 4. Implement a `DELETE /patients/:patientId` route.
-  - This deletes the patient with that ID if they exists
-  - If the patient does not exist, throw the correct error.
-### 5. Implement a `PUT /patients/:patientId` route.
+### 3. Implement a `PUT /patients/:patientId` route.
   - This updates the patient with an `id` of `patientId` if they exist
   - If the patient does not exists, throw the correct error.
   - This route **must** validate the patient data - however we do not need to support the full FHIR spec for patients, only support the following fields
@@ -55,10 +49,10 @@ There is tooling to create a datastore of users in `data/users.json`. These incl
     - `name`
   - The specification for these fields can be found in the [FHIR documentation](https://www.hl7.org/fhir/patient.html) however, it is very verbose. You only need to validate the fields that we have in our patients data store. See appendix below for the spec.
   - The recommended approach to validation here is to use [joi](https://www.npmjs.com/package/joi) but any method is acceptable
-### 6. Implement a `GET /patients` route.
+### 4. Implement a `GET /patients` route.
   - This lists all patients that match given criteria
   - You should support the `birthdate` search parameter as described in the [Search Parameters FHIR spec](https://www.hl7.org/fhir/patient.html#search)
-### 7. Improvements?
+### 5. Improvements?
   - There is no deliverable for this portion - however, we will have a discussion about what improvements you would make to this project to make it production ready.
 
 ## Setup
