@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index",
-    "setup-data": "node etc/generate-patients && node etc/generate-users"
+    "setup-data": "node etc/generate-patients && node etc/generate-users",
+    "start": "node index.js"
   },
   "engines": {
     "node": "14.x"
